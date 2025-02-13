@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Intersection Observer dla animacji sekcji
+  // Intersection Observer dla animacji wjazdu sekcji
   const sections = document.querySelectorAll(".section");
   const observerOptions = {
     root: null,
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver(observerCallback, observerOptions);
   sections.forEach(section => observer.observe(section));
 
-  // Slider w sekcji Hero
+  // Slider w sekcji Hero (zmiana zdjęć co 5 sekund)
   const slides = document.querySelectorAll(".slider .slide");
   let currentSlide = 0;
   const slideInterval = 5000; // zmiana zdjęcia co 5 sekund
@@ -29,4 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
     currentSlide = (currentSlide + 1) % slides.length;
     slides[currentSlide].classList.add("active");
   }, slideInterval);
+
+  // Hamburger menu – obsługa kliknięcia
+  const navToggle = document.querySelector(".nav-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  navToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+  });
 });
