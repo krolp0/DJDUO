@@ -54,7 +54,7 @@ body {
   color: var(--gold-color);
 }
 
-/* Przycisk hamburgera – widoczny na mobile */
+/* Hamburger */
 .nav-toggle {
   display: none;
   background: none;
@@ -89,11 +89,11 @@ body {
   top: 8px;
 }
 
-/* -- SEKCJE OGÓLNE -- */
+/* -- SEKCJE -- */
 .section {
   position: relative;
   padding: 4rem 2rem;
-  opacity: 0;
+  opacity: 0;                /* animacja wjazdu */
   transform: translateY(50px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
@@ -108,7 +108,7 @@ body {
   margin: 0 auto;
 }
 
-/* -- SEKCJA HERO (PEŁNY EKRAN) -- */
+/* -- HERO (PEŁNY EKRAN) -- */
 .hero {
   display: flex;
   align-items: center;
@@ -119,7 +119,7 @@ body {
   position: relative;
 }
 
-/* -- SLIDER – USTAWIANIE TŁA PRZY UŻYCIU CSS -- */
+/* Slider tła */
 .slider {
   position: absolute;
   top: 0;
@@ -140,7 +140,18 @@ body {
   color: var(--gold-color);
   text-transform: uppercase;
   letter-spacing: 2px;
+  /* Dodajemy cień tekstu, by lepiej się odcinał */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
+
+/* 
+   Opcjonalnie możesz dodać półprzezroczyste tło za tekstem (odkomentuj):
+   .hero-content {
+     background: rgba(0, 0, 0, 0.4);
+     display: inline-block;
+     padding: 1rem;
+   }
+*/
 
 .hero-content p {
   font-size: 1.2rem;
@@ -163,17 +174,19 @@ body {
   color: var(--black-color);
 }
 
-/* -- POZOSTAŁE SEKCJE (O nas, Portfolio, Aktualności, Kontakt) – style bez zmian -- */
+/* -- O NAS, PORTFOLIO, AKTUALNOŚCI, KONTAKT -- */
 .about h2,
 .portfolio h2,
 .news h2,
-.contact h2 {
+.contact h2,
+.fotolustro h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
   color: var(--gold-color);
   text-align: center;
 }
 
+/* Portfolio */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -191,6 +204,7 @@ body {
   transform: scale(1.03);
 }
 
+/* Aktualności */
 .news-item {
   background-color: rgba(255, 255, 255, 0.05);
   padding: 1.5rem;
@@ -204,6 +218,7 @@ body {
   color: var(--gold-color);
 }
 
+/* Kontakt */
 .contact p {
   text-align: center;
   margin-bottom: 2rem;
@@ -246,6 +261,7 @@ body {
   opacity: 0.8;
 }
 
+/* Stopka + social media */
 .footer {
   background-color: rgba(0, 0, 0, 0.9);
   padding: 2rem;
@@ -257,8 +273,18 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.social-links a {
+  color: var(--gold-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: var(--white-color);
+}
+
 /* -- RESPONSYWNOŚĆ -- */
-/* Na desktopie */
 @media (min-width: 769px) {
   .nav-toggle {
     display: none;
@@ -268,7 +294,6 @@ body {
   }
 }
 
-/* Na mobile (max-width: 768px) */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
