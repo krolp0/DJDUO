@@ -93,7 +93,7 @@ body {
 .section {
   position: relative;
   padding: 4rem 2rem;
-  opacity: 0;                /* animacja wjazdu */
+  opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
@@ -136,26 +136,11 @@ body {
 /* Treść Hero */
 .hero-content h1 {
   font-size: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem; /* trochę większy odstęp po usunięciu podtytułu */
   color: var(--gold-color);
   text-transform: uppercase;
   letter-spacing: 2px;
-  /* Dodajemy cień tekstu, by lepiej się odcinał */
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-}
-
-/* 
-   Opcjonalnie możesz dodać półprzezroczyste tło za tekstem (odkomentuj):
-   .hero-content {
-     background: rgba(0, 0, 0, 0.4);
-     display: inline-block;
-     padding: 1rem;
-   }
-*/
-
-.hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
 }
 
 .btn-hero {
@@ -174,12 +159,11 @@ body {
   color: var(--black-color);
 }
 
-/* -- O NAS, PORTFOLIO, AKTUALNOŚCI, KONTAKT -- */
+/* -- O NAS, PORTFOLIO, FOTOLUSTRO, KONTAKT -- */
 .about h2,
 .portfolio h2,
-.news h2,
-.contact h2,
-.fotolustro h2 {
+.fotolustro h2,
+.contact h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
   color: var(--gold-color);
@@ -204,60 +188,19 @@ body {
   transform: scale(1.03);
 }
 
-/* Aktualności */
-.news-item {
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-  border-left: 4px solid var(--gold-color);
-}
-
-.news-item h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--gold-color);
-}
-
 /* Kontakt */
-.contact p {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #444;
-  background-color: #222;
-  color: var(--white-color);
-}
-
-.btn-submit {
+.contact .btn-contact {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
   background-color: var(--gold-color);
   color: var(--black-color);
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
   transition: opacity 0.3s;
 }
 
-.btn-submit:hover {
+.contact .btn-contact:hover {
   opacity: 0.8;
 }
 
