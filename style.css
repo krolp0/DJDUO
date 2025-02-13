@@ -136,21 +136,23 @@ body {
 /* Treść Hero */
 .hero-content h1 {
   font-size: 3rem;
-  margin-bottom: 2rem; /* trochę większy odstęp po usunięciu podtytułu */
+  margin-bottom: 2rem;
   color: var(--gold-color);
   text-transform: uppercase;
   letter-spacing: 2px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
+/* Bardziej widoczny przycisk "Poznaj nas" */
 .btn-hero {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: transparent;
-  color: var(--white-color);
+  padding: 1rem 2rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--gold-color);
   border: 2px solid var(--gold-color);
   text-decoration: none;
   font-weight: 600;
+  font-size: 1.2rem;
   transition: all 0.3s ease;
 }
 
@@ -170,18 +172,22 @@ body {
   text-align: center;
 }
 
-/* Portfolio */
+/* Kwadratowe miniaturki w galeriach */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* Możesz zmniejszyć minmax, jeśli chcesz więcej kolumn na szerokich ekranach */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
 }
 
 .gallery-item img {
   width: 100%;
-  height: auto;
+  /* Klucz do kwadratów: aspect-ratio 1/1 + object-fit */
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   border: 2px solid var(--gold-color);
   transition: transform 0.3s;
+  cursor: pointer; /* wskazówka, że można kliknąć */
 }
 
 .gallery-item img:hover {
@@ -189,7 +195,12 @@ body {
 }
 
 /* Kontakt */
-.contact .btn-contact {
+.contact p {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.btn-contact {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
@@ -200,11 +211,11 @@ body {
   transition: opacity 0.3s;
 }
 
-.contact .btn-contact:hover {
+.btn-contact:hover {
   opacity: 0.8;
 }
 
-/* Stopka + social media */
+/* Stopka */
 .footer {
   background-color: rgba(0, 0, 0, 0.9);
   padding: 2rem;
@@ -216,15 +227,41 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.social-links a {
-  color: var(--gold-color);
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s;
+/* -- LIGHTBOX (MODAL) -- */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s;
+  z-index: 1000;
 }
 
-.social-links a:hover {
-  color: var(--white-color);
+.lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
 }
 
 /* -- RESPONSYWNOŚĆ -- */
@@ -258,5 +295,11 @@ body {
   }
   .nav-toggle {
     display: block;
+  }
+  
+  /* W razie potrzeby zmniejsz rozmiar przycisku hero na węższych ekranach */
+  .btn-hero {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
   }
 }
