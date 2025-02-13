@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Intersection Observer dla animacji wjazdu sekcji
+  // Intersection Observer (animacja wjazdu sekcji)
   const sections = document.querySelectorAll(".section");
   const observerOptions = {
     root: null,
