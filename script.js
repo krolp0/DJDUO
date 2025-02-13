@@ -19,16 +19,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver(observerCallback, observerOptions);
   sections.forEach(section => observer.observe(section));
 
-  // Slider w sekcji Hero (zmiana zdjęć co 5 sekund)
-  const slides = document.querySelectorAll(".slider .slide");
-  let currentSlide = 0;
-  const slideInterval = 5000; // zmiana zdjęcia co 5 sekund
+  // Slider tła – zmiana obrazka co 5 sekund
+  const slider = document.querySelector(".slider");
+  const images = ["fotolustro1.jpg", "fotolustro2.jpg"];
+  let currentIndex = 0;
+  slider.style.backgroundImage = `url(${images[currentIndex]})`;
 
   setInterval(() => {
-    slides[currentSlide].classList.remove("active");
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add("active");
-  }, slideInterval);
+    currentIndex = (currentIndex + 1) % images.length;
+    slider.style.backgroundImage = `url(${images[currentIndex]})`;
+  }, 5000);
 
   // Hamburger menu – obsługa kliknięcia
   const navToggle = document.querySelector(".nav-toggle");
