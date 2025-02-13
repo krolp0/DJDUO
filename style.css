@@ -36,14 +36,13 @@ body {
   max-height: 50px;
 }
 
-/* Kontener linków nawigacji */
+/* Linki nawigacji */
 .nav-links ul {
   list-style: none;
   display: flex;
   gap: 1.5rem;
 }
 
-/* Styl linków */
 .nav-links ul li a {
   text-decoration: none;
   color: var(--white-color);
@@ -55,7 +54,7 @@ body {
   color: var(--gold-color);
 }
 
-/* Przycisk hamburgera (tylko mobile) */
+/* Przycisk hamburgera – widoczny na mobile */
 .nav-toggle {
   display: none;
   background: none;
@@ -94,7 +93,7 @@ body {
 .section {
   position: relative;
   padding: 4rem 2rem;
-  opacity: 0;                /* do animacji wjazdu */
+  opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
@@ -114,36 +113,27 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh; /* wypełnia cały ekran */
-  padding: 0;        /* usuwamy dodatkowy padding */
+  min-height: 100vh;
+  padding: 0;
   text-align: center;
   position: relative;
 }
 
-/* SLIDER TŁA */
+/* -- SLIDER – USTAWIANIE TŁA PRZY UŻYCIU CSS -- */
 .slider {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  z-index: -1; /* tło za treścią */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+  z-index: -1;
 }
 
-.slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.slide.active {
-  opacity: 1;
-}
-
+/* Treść Hero */
 .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
@@ -173,17 +163,13 @@ body {
   color: var(--black-color);
 }
 
-/* -- SEKCJA "O NAS" -- */
-.about h2 {
+/* -- POZOSTAŁE SEKCJE (O nas, Portfolio, Aktualności, Kontakt) – style bez zmian -- */
+.about h2,
+.portfolio h2,
+.news h2,
+.contact h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: var(--gold-color);
-}
-
-/* -- SEKCJA PORTFOLIO (GALERIA) -- */
-.portfolio h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
   color: var(--gold-color);
   text-align: center;
 }
@@ -205,14 +191,6 @@ body {
   transform: scale(1.03);
 }
 
-/* -- SEKCJA AKTUALNOŚCI -- */
-.news h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: var(--gold-color);
-  text-align: center;
-}
-
 .news-item {
   background-color: rgba(255, 255, 255, 0.05);
   padding: 1.5rem;
@@ -224,14 +202,6 @@ body {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
   color: var(--gold-color);
-}
-
-/* -- SEKCJA KONTAKT -- */
-.contact h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: var(--gold-color);
-  text-align: center;
 }
 
 .contact p {
@@ -276,7 +246,6 @@ body {
   opacity: 0.8;
 }
 
-/* -- STOPKA -- */
 .footer {
   background-color: rgba(0, 0, 0, 0.9);
   padding: 2rem;
@@ -289,19 +258,18 @@ body {
 }
 
 /* -- RESPONSYWNOŚĆ -- */
-/* Dla większych ekranów (od 769px) – menu w poziomie */
+/* Na desktopie */
 @media (min-width: 769px) {
   .nav-toggle {
-    display: none; /* hamburger znika na desktopie */
+    display: none;
   }
   .nav-links {
-    display: block; /* menu zawsze widoczne */
+    display: block;
   }
 }
 
-/* Dla mniejszych ekranów (max 768px) – hamburger i ukryte menu */
+/* Na mobile (max-width: 768px) */
 @media (max-width: 768px) {
-  /* Początkowo chowamy menu */
   .nav-links {
     display: none;
     position: absolute;
@@ -313,7 +281,7 @@ body {
     border: 1px solid var(--gold-color);
   }
   .nav-links.open {
-    display: block; /* po kliknięciu hamburgera menu się pojawia */
+    display: block;
   }
   .nav-links ul {
     flex-direction: column;
@@ -321,6 +289,6 @@ body {
     margin: 1rem;
   }
   .nav-toggle {
-    display: block; /* hamburger widoczny */
+    display: block;
   }
 }
