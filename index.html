@@ -21,7 +21,6 @@
         <li><a href="#hero">Start</a></li>
         <li><a href="#onas">O nas</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
-        <!-- Usunięto Aktualności z menu -->
         <li><a href="#fotolustro">Fotolustro</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
@@ -33,7 +32,6 @@
     <div class="slider"></div>
     <div class="hero-content container">
       <h1>DJ DUO</h1>
-      <!-- Usunięto podtytuł „Muzyka, która łączy” -->
       <a href="#onas" class="btn-hero">Poznaj nas</a>
     </div>
   </section>
@@ -61,13 +59,13 @@
       <h2>Portfolio</h2>
       <div class="gallery">
         <div class="gallery-item">
-          <img src="https://via.placeholder.com/300x200/000000/FFFFFF?text=DJ+DUO+1" alt="DJ DUO Event 1">
+          <img src="https://via.placeholder.com/300x300/000000/FFFFFF?text=DJ+DUO+1" alt="DJ DUO Event 1">
         </div>
         <div class="gallery-item">
-          <img src="https://via.placeholder.com/300x200/000000/FFFFFF?text=DJ+DUO+2" alt="DJ DUO Event 2">
+          <img src="https://via.placeholder.com/300x300/000000/FFFFFF?text=DJ+DUO+2" alt="DJ DUO Event 2">
         </div>
         <div class="gallery-item">
-          <img src="https://via.placeholder.com/300x200/000000/FFFFFF?text=DJ+DUO+3" alt="DJ DUO Event 3">
+          <img src="https://via.placeholder.com/300x300/000000/FFFFFF?text=DJ+DUO+3" alt="DJ DUO Event 3">
         </div>
       </div>
     </div>
@@ -86,7 +84,7 @@
         Natychmiastowa pamiątka gwarantowana!
       </p>
 
-      <!-- Możesz dodać tutaj zdjęcia fotolustra -->
+      <!-- Kwadratowe miniaturki -->
       <div class="gallery">
         <div class="gallery-item">
           <img src="fotolustro1.jpg" alt="Fotolustro 1">
@@ -109,19 +107,20 @@
     </div>
   </section>
 
-  <!-- Stopka z social mediami (opcjonalnie) -->
+  <!-- Stopka (bez Facebooka) -->
   <footer class="footer">
     <div class="container">
       <p>&copy; 2025 DJ DUO. Wszelkie prawa zastrzeżone.</p>
-      <div class="social-links">
-        <a href="https://www.facebook.com/DJ.Duo.Wyszkow" target="_blank" rel="noopener">
-          Nasz Facebook
-        </a>
-      </div>
     </div>
   </footer>
 
-  <!-- Skrypt do animacji sekcji, slidera i hamburgera -->
+  <!-- Lightbox (modal) do powiększania zdjęć -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="Enlarged image" />
+  </div>
+
+  <!-- Skrypt do animacji sekcji, slidera, hamburgera i lightboxa -->
   <script src="script.js"></script>
 </body>
 </html>
