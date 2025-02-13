@@ -8,19 +8,14 @@
 </head>
 <body>
 
-  <!-- Nawigacja z hamburgerem -->
+  <!-- Nawigacja (bez zmian) -->
   <header class="navbar">
     <div class="logo">
-      <!-- Podmień "logo.jpg" na ścieżkę do Twojego logo -->
       <img src="logo.jpg" alt="Logo DJ DUO" />
     </div>
-
-    <!-- Przycisk hamburgera widoczny tylko na mobile -->
     <button class="nav-toggle" aria-label="Menu">
       <span class="hamburger"></span>
     </button>
-
-    <!-- Nawigacja (rozwijana na mobile) -->
     <nav class="nav-links">
       <ul>
         <li><a href="#hero">Start</a></li>
@@ -32,16 +27,12 @@
     </nav>
   </header>
 
-  <!-- Sekcja powitalna (Hero) z pełną wysokością i sliderem w tle -->
+  <!-- Sekcja Hero z tłem ustawianym jako slider -->
   <section id="hero" class="hero section">
-    <!-- Slider: zdjęcia przewijane w tle -->
-    <div class="slider">
-      <img src="fotolustro1.jpg" alt="Fotolustro 1" class="slide active">
-      <img src="fotolustro2.jpg" alt="Fotolustro 2" class="slide">
-      <!-- Dodaj kolejne zdjęcia, jeśli chcesz -->
-    </div>
+    <!-- Kontener slidera – tło ustawiane przez CSS -->
+    <div class="slider"></div>
     
-    <!-- Treść, która pozostaje na wierzchu slidera -->
+    <!-- Treść, która pozostaje na wierzchu -->
     <div class="hero-content container">
       <h1>DJ DUO</h1>
       <p>Muzyka, która łączy</p>
@@ -49,7 +40,7 @@
     </div>
   </section>
 
-  <!-- Sekcja "O nas" -->
+  <!-- Pozostałe sekcje (O nas, Portfolio, Aktualności, Kontakt) bez zmian -->
   <section id="onas" class="section about">
     <div class="container">
       <h2>O nas</h2>
@@ -66,7 +57,6 @@
     </div>
   </section>
 
-  <!-- Sekcja "Portfolio" -->
   <section id="portfolio" class="section portfolio">
     <div class="container">
       <h2>Portfolio</h2>
@@ -84,7 +74,6 @@
     </div>
   </section>
 
-  <!-- Sekcja "Aktualności" -->
   <section id="aktualnosci" class="section news">
     <div class="container">
       <h2>Aktualności</h2>
@@ -105,7 +94,6 @@
     </div>
   </section>
 
-  <!-- Sekcja "Kontakt" -->
   <section id="kontakt" class="section contact">
     <div class="container">
       <h2>Kontakt</h2>
@@ -128,14 +116,13 @@
     </div>
   </section>
 
-  <!-- Stopka -->
   <footer class="footer">
     <div class="container">
       <p>&copy; 2025 DJ DUO. Wszelkie prawa zastrzeżone.</p>
     </div>
   </footer>
 
-  <!-- Skrypt do animacji sekcji, slidera i hamburgera -->
+  <!-- Skrypty (animacje, slider, obsługa hamburgera) -->
   <script src="script.js"></script>
 </body>
 </html>
