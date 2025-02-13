@@ -24,7 +24,7 @@ body {
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* bo usuwamy logo z lewej */
+  justify-content: space-between;
   padding: 1rem 2rem;
   background-color: rgba(0, 0, 0, 0.9);
   position: sticky;
@@ -32,7 +32,9 @@ body {
   z-index: 999;
 }
 
-/* Logo w hero zamiast w nawigacji, więc usuwamy .logo { ... } */
+.logo img {
+  max-height: 50px;
+}
 
 /* Linki nawigacji */
 .nav-links ul {
@@ -131,17 +133,17 @@ body {
   z-index: -1;
 }
 
-/* Logo w hero */
-.hero-logo {
-  max-width: 250px;
+/* Treść Hero */
+.hero-content h1 {
+  font-size: 3rem;
   margin-bottom: 2rem;
-  /* Możesz dodać ewentualnie:
-     max-height: 250px; 
-     aby ograniczyć wysokość
-  */
+  color: var(--gold-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* Przycisk "Poznaj nas" */
+/* Bardziej widoczny przycisk "Poznaj nas" */
 .btn-hero {
   display: inline-block;
   padding: 1rem 2rem;
@@ -173,17 +175,19 @@ body {
 /* Kwadratowe miniaturki w galeriach */
 .gallery {
   display: grid;
+  /* Możesz zmniejszyć minmax, jeśli chcesz więcej kolumn na szerokich ekranach */
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
 }
 
 .gallery-item img {
   width: 100%;
+  /* Klucz do kwadratów: aspect-ratio 1/1 + object-fit */
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border: 2px solid var(--gold-color);
   transition: transform 0.3s;
-  cursor: pointer;
+  cursor: pointer; /* wskazówka, że można kliknąć */
 }
 
 .gallery-item img:hover {
@@ -292,8 +296,8 @@ body {
   .nav-toggle {
     display: block;
   }
-
-  /* Dostosowanie rozmiaru przycisku hero na węższych ekranach */
+  
+  /* W razie potrzeby zmniejsz rozmiar przycisku hero na węższych ekranach */
   .btn-hero {
     font-size: 1rem;
     padding: 0.75rem 1rem;
