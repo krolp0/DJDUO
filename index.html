@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DJ DUO – Oficjalna Strona</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Możesz dodać favicon: <link rel="icon" href="favicon.ico" /> -->
+</head>
+<body>
+
+  <!-- Górny pasek nawigacyjny -->
+  <header class="navbar">
+    <div class="logo">
+      <!-- Zastąp "logo.png" ścieżką do Waszego pliku z logo -->
+      <img src="logo.png" alt="Logo DJ DUO" />
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#hero">Start</a></li>
+        <li><a href="#onas">O nas</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#aktualnosci">Aktualności</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Sekcja powitalna (hero) -->
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <h1>DJ DUO</h1>
+      <p>Muzyka, która łączy</p>
+      <a href="#onas" class="btn-hero">Poznaj nas</a>
+    </div>
+  </section>
+
+  <!-- Sekcja "O nas" -->
+  <section id="onas" class="section about">
+    <div class="container">
+      <h2>O nas</h2>
+      <p>
+        Jesteśmy dwoma DJ-ami z pasją, którzy kochają dzielić się muzyką i energią 
+        z publicznością. Nasza przygoda zaczęła się kilka lat temu, kiedy połączyła 
+        nas miłość do dobrych brzmień i niezapomnianych imprez.
+      </p>
+      <p>
+        Gramy różnorodne style muzyczne – od klasycznych hitów, przez house i EDM, 
+        aż po klimatyczne sety na kameralnych eventach. Najważniejsze jest dla nas 
+        stworzenie niepowtarzalnej atmosfery i wywołanie uśmiechu na twarzach gości.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sekcja "Portfolio" (Galeria) -->
+  <section id="portfolio" class="section portfolio">
+    <div class="container">
+      <h2>Portfolio</h2>
+      <div class="gallery">
+        <!-- Wstaw tutaj miniaturki zdjęć/filmów z występów -->
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/300x200/000000/FFFFFF?text=DJ+DUO+1" alt="DJ DUO Event 1">
+        </div>
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/300x200/000000/FFFFFF?text=DJ+DUO+2" alt="DJ DUO Event 2">
+        </div>
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/300x200/000000/FFFFFF?text=DJ+DUO+3" alt="DJ DUO Event 3">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sekcja "Aktualności" -->
+  <section id="aktualnosci" class="section news">
+    <div class="container">
+      <h2>Aktualności</h2>
+      <article class="news-item">
+        <h3>Nowy set dostępny online</h3>
+        <p>
+          Sprawdź nasz najnowszy mix w serwisie SoundCloud. Idealny na weekendowe 
+          rozgrzewki przed imprezą!
+        </p>
+      </article>
+      <article class="news-item">
+        <h3>Gramy na festiwalu XYZ</h3>
+        <p>
+          Już w przyszłym miesiącu wystąpimy na festiwalu XYZ. Przygotujcie się na 
+          solidną dawkę muzycznych wrażeń!
+        </p>
+      </article>
+      <!-- Dodawaj kolejne newsy według potrzeb -->
+    </div>
+  </section>
+
+  <!-- Sekcja "Kontakt" -->
+  <section id="kontakt" class="section contact">
+    <div class="container">
+      <h2>Kontakt</h2>
+      <p>Masz pytania? Chcesz nawiązać współpracę? Napisz do nas!</p>
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name">Imię</label>
+          <input type="text" id="name" name="name" placeholder="Twoje imię" required />
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="Twój e-mail" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Wiadomość</label>
+          <textarea id="message" name="message" rows="5" placeholder="Treść wiadomości..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Wyślij</button>
+      </form>
+      <!-- Dodatkowo możesz podać bezpośrednie dane kontaktowe, np. e-mail, tel. -->
+    </div>
+  </section>
+
+  <!-- Stopka -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 DJ DUO. Wszelkie prawa zastrzeżone.</p>
+      <!-- Ikony social media – jeśli chcecie je dodać -->
+      <!--
+      <div class="social-links">
+        <a href="#"><img src="icon-fb.png" alt="Facebook"></a>
+        <a href="#"><img src="icon-ig.png" alt="Instagram"></a>
+        <a href="#"><img src="icon-yt.png" alt="YouTube"></a>
+      </div>
+      -->
+    </div>
+  </footer>
+
+</body>
+</html>
