@@ -8,13 +8,20 @@
 </head>
 <body>
 
-  <!-- Nawigacja -->
+  <!-- Nawigacja z hamburgerem -->
   <header class="navbar">
     <div class="logo">
-      <!-- Podmień "logo.png" na ścieżkę do Twojego logo -->
-      <img src="Logo.jpg" alt="Logo DJ DUO" />
+      <!-- Podmień "logo.jpg" na ścieżkę do Twojego logo -->
+      <img src="logo.jpg" alt="Logo DJ DUO" />
     </div>
-    <nav>
+
+    <!-- Przycisk hamburgera widoczny tylko na mobile -->
+    <button class="nav-toggle" aria-label="Menu">
+      <span class="hamburger"></span>
+    </button>
+
+    <!-- Nawigacja (rozwijana na mobile) -->
+    <nav class="nav-links">
       <ul>
         <li><a href="#hero">Start</a></li>
         <li><a href="#onas">O nas</a></li>
@@ -25,12 +32,13 @@
     </nav>
   </header>
 
-  <!-- Sekcja powitalna (Hero) z sliderem -->
+  <!-- Sekcja powitalna (Hero) z pełną wysokością i sliderem w tle -->
   <section id="hero" class="hero section">
     <!-- Slider: zdjęcia przewijane w tle -->
     <div class="slider">
-      <img src="Fotolustro1.jpg" alt="Fotolustro 1" class="slide active">
-      <img src="Fotolustro2.jpg" alt="Fotolustro 2" class="slide">
+      <img src="fotolustro1.jpg" alt="Fotolustro 1" class="slide active">
+      <img src="fotolustro2.jpg" alt="Fotolustro 2" class="slide">
+      <!-- Dodaj kolejne zdjęcia, jeśli chcesz -->
     </div>
     
     <!-- Treść, która pozostaje na wierzchu slidera -->
@@ -127,7 +135,7 @@
     </div>
   </footer>
 
-  <!-- Skrypt do animacji sekcji i slidera -->
+  <!-- Skrypt do animacji sekcji, slidera i hamburgera -->
   <script src="script.js"></script>
 </body>
 </html>
