@@ -37,4 +37,29 @@ document.addEventListener("DOMContentLoaded", () => {
   navToggle.addEventListener("click", () => {
     navLinks.classList.toggle("open");
   });
+
+  // Lightbox (powiększanie zdjęć po kliknięciu)
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const lightboxClose = document.getElementById("lightboxClose");
+
+  // Każde zdjęcie w .gallery otwiera lightbox
+  document.querySelectorAll(".gallery-item img").forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.classList.add("open");
+      lightboxImg.src = img.src;
+    });
+  });
+
+  // Zamknięcie lightboxa po kliknięciu X
+  lightboxClose.addEventListener("click", () => {
+    lightbox.classList.remove("open");
+  });
+
+  // Zamknięcie lightboxa po kliknięciu w tło (poza obrazem)
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove("open");
+    }
+  });
 });
