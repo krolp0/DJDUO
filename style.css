@@ -1,4 +1,4 @@
-/* ZMIENNE KOLORÓW I USTAWIENIA */
+/* -- ZMIENNE KOLORÓW I USTAWIENIA -- */
 :root {
   --black-color: #000000;
   --gold-color: #C9A86A;
@@ -20,7 +20,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Nawigacja */
+/* -- NAWIGACJA -- */
 .navbar {
   display: flex;
   align-items: center;
@@ -32,32 +32,69 @@ body {
   z-index: 999;
 }
 
-.navbar .logo img {
+.logo img {
   max-height: 50px;
 }
 
-.navbar ul {
+/* Kontener linków nawigacji */
+.nav-links ul {
   list-style: none;
   display: flex;
   gap: 1.5rem;
 }
 
-.navbar ul li a {
+/* Styl linków */
+.nav-links ul li a {
   text-decoration: none;
   color: var(--white-color);
   font-weight: 600;
   transition: color 0.3s;
 }
 
-.navbar ul li a:hover {
+.nav-links ul li a:hover {
   color: var(--gold-color);
 }
 
-/* Sekcje */
+/* Przycisk hamburgera (tylko mobile) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.nav-toggle .hamburger {
+  width: 25px;
+  height: 3px;
+  background-color: var(--white-color);
+  position: relative;
+  transition: all 0.3s;
+}
+
+.nav-toggle .hamburger::before,
+.nav-toggle .hamburger::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background-color: var(--white-color);
+  transition: all 0.3s;
+}
+
+.nav-toggle .hamburger::before {
+  top: -8px;
+}
+
+.nav-toggle .hamburger::after {
+  top: 8px;
+}
+
+/* -- SEKCJE OGÓLNE -- */
 .section {
   position: relative;
   padding: 4rem 2rem;
-  opacity: 0;
+  opacity: 0;                /* do animacji wjazdu */
   transform: translateY(50px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
@@ -72,7 +109,18 @@ body {
   margin: 0 auto;
 }
 
-/* Slider w sekcji Hero */
+/* -- SEKCJA HERO (PEŁNY EKRAN) -- */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* wypełnia cały ekran */
+  padding: 0;        /* usuwamy dodatkowy padding */
+  text-align: center;
+  position: relative;
+}
+
+/* SLIDER TŁA */
 .slider {
   position: absolute;
   top: 0;
@@ -80,7 +128,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  z-index: -1;
+  z-index: -1; /* tło za treścią */
 }
 
 .slide {
@@ -94,16 +142,6 @@ body {
 
 .slide.active {
   opacity: 1;
-}
-
-/* Sekcja Hero */
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 80vh;
-  text-align: center;
-  position: relative;
 }
 
 .hero-content h1 {
@@ -135,14 +173,14 @@ body {
   color: var(--black-color);
 }
 
-/* Sekcja O nas */
+/* -- SEKCJA "O NAS" -- */
 .about h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
   color: var(--gold-color);
 }
 
-/* Sekcja Portfolio (Galeria) */
+/* -- SEKCJA PORTFOLIO (GALERIA) -- */
 .portfolio h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
@@ -167,7 +205,7 @@ body {
   transform: scale(1.03);
 }
 
-/* Sekcja Aktualności */
+/* -- SEKCJA AKTUALNOŚCI -- */
 .news h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
@@ -188,7 +226,7 @@ body {
   color: var(--gold-color);
 }
 
-/* Sekcja Kontakt */
+/* -- SEKCJA KONTAKT -- */
 .contact h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
@@ -238,7 +276,7 @@ body {
   opacity: 0.8;
 }
 
-/* Stopka */
+/* -- STOPKA -- */
 .footer {
   background-color: rgba(0, 0, 0, 0.9);
   padding: 2rem;
@@ -250,19 +288,39 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* Responsywność */
+/* -- RESPONSYWNOŚĆ -- */
+/* Dla większych ekranów (od 769px) – menu w poziomie */
+@media (min-width: 769px) {
+  .nav-toggle {
+    display: none; /* hamburger znika na desktopie */
+  }
+  .nav-links {
+    display: block; /* menu zawsze widoczne */
+  }
+}
+
+/* Dla mniejszych ekranów (max 768px) – hamburger i ukryte menu */
 @media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2rem;
+  /* Początkowo chowamy menu */
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 200px;
+    text-align: right;
+    border: 1px solid var(--gold-color);
   }
-  .hero-content p {
-    font-size: 1rem;
+  .nav-links.open {
+    display: block; /* po kliknięciu hamburgera menu się pojawia */
   }
-  .navbar ul {
+  .nav-links ul {
     flex-direction: column;
     gap: 1rem;
+    margin: 1rem;
   }
-  .section {
-    padding: 3rem 1rem;
+  .nav-toggle {
+    display: block; /* hamburger widoczny */
   }
 }
