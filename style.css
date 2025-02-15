@@ -36,7 +36,6 @@ body {
   max-height: 50px;
 }
 
-/* Linki nawigacji */
 .nav-links ul {
   list-style: none;
   display: flex;
@@ -93,7 +92,7 @@ body {
 .section {
   position: relative;
   padding: 4rem 2rem;
-  opacity: 0;
+  opacity: 0; /* animacja wjazdu */
   transform: translateY(50px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
@@ -136,14 +135,14 @@ body {
 /* Tekst w Hero */
 .hero-content h1 {
   font-size: 3rem;
-  margin-bottom: 2rem; /* większy odstęp po usunięciu podtytułu */
+  margin-bottom: 2rem;
   color: var(--gold-color);
   text-transform: uppercase;
   letter-spacing: 2px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* Bardziej widoczny przycisk "Poznaj nas" */
+/* Przycisk "Poznaj nas" */
 .btn-hero {
   display: inline-block;
   padding: 1rem 2rem;
@@ -161,10 +160,11 @@ body {
   color: var(--black-color);
 }
 
-/* -- O NAS, PORTFOLIO, FOTOLUSTRO, KONTAKT -- */
+/* -- O NAS, PORTFOLIO, FOTOLUSTRO, DYM, KONTAKT -- */
 .about h2,
 .portfolio h2,
 .fotolustro h2,
+.dym h2,
 .contact h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
@@ -172,7 +172,6 @@ body {
   text-align: center;
 }
 
-/* Kwadratowe miniaturki w galeriach */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -295,7 +294,6 @@ body {
     display: block;
   }
 
-  /* Dostosowanie przycisku hero na węższych ekranach */
   .btn-hero {
     font-size: 1rem;
     padding: 0.75rem 1rem;
