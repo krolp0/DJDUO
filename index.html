@@ -11,6 +11,7 @@
   <!-- Nawigacja z hamburgerem + logo -->
   <header class="navbar">
     <div class="logo">
+      <!-- Upewnij się, że plik logo.jpg jest w repo (lub zmień nazwę) -->
       <img src="logo.jpg" alt="Logo DJ DUO" />
     </div>
     <button class="nav-toggle" aria-label="Menu">
@@ -21,8 +22,8 @@
         <li><a href="#hero">Start</a></li>
         <li><a href="#onas">O nas</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
-        <!-- Brak Aktualności w menu -->
         <li><a href="#fotolustro">Fotolustro</a></li>
+        <li><a href="#dym">Ciężki dym</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
     </nav>
@@ -33,7 +34,6 @@
     <div class="slider"></div>
     <div class="hero-content container">
       <h1>DJ DUO</h1>
-      <!-- Usunięty podtytuł „Muzyka, która łączy” -->
       <a href="#onas" class="btn-hero">Poznaj nas</a>
     </div>
   </section>
@@ -55,25 +55,16 @@
     </div>
   </section>
 
-  <!-- Sekcja "Portfolio" -->
+  <!-- Sekcja "Portfolio" - wczytuje zdjęcia z folderu "DJ" w repozytorium -->
   <section id="portfolio" class="section portfolio">
     <div class="container">
       <h2>Portfolio</h2>
-      <div class="gallery">
-        <div class="gallery-item">
-          <img src="https://via.placeholder.com/300x300/000000/FFFFFF?text=DJ+DUO+1" alt="DJ DUO Event 1">
-        </div>
-        <div class="gallery-item">
-          <img src="https://via.placeholder.com/300x300/000000/FFFFFF?text=DJ+DUO+2" alt="DJ DUO Event 2">
-        </div>
-        <div class="gallery-item">
-          <img src="https://via.placeholder.com/300x300/000000/FFFFFF?text=DJ+DUO+3" alt="DJ DUO Event 3">
-        </div>
-      </div>
+      <!-- Galeria automatycznie wypełniana w script.js -->
+      <div class="gallery" id="galleryDJ"></div>
     </div>
   </section>
 
-  <!-- Sekcja "Fotolustro" -->
+  <!-- Sekcja "Fotolustro" - wczytuje zdjęcia z folderu "foto" -->
   <section id="fotolustro" class="section fotolustro">
     <div class="container">
       <h2>Fotolustro</h2>
@@ -85,16 +76,19 @@
         Wystarczy podejść do lustra, wybrać gadżety i zrobić zdjęcie. 
         Natychmiastowa pamiątka gwarantowana!
       </p>
+      <div class="gallery" id="galleryFoto"></div>
+    </div>
+  </section>
 
-      <!-- Kwadratowe miniaturki -->
-      <div class="gallery">
-        <div class="gallery-item">
-          <img src="fotolustro1.jpg" alt="Fotolustro 1">
-        </div>
-        <div class="gallery-item">
-          <img src="fotolustro2.jpg" alt="Fotolustro 2">
-        </div>
-      </div>
+  <!-- Sekcja "Ciężki dym" - wczytuje zdjęcia z folderu "dym" -->
+  <section id="dym" class="section dym">
+    <div class="container">
+      <h2>Ciężki dym</h2>
+      <p>
+        Efektowny ciężki dym, który nadaje wydarzeniom wyjątkowy klimat. 
+        Idealny do pierwszego tańca, pokazów i niezapomnianych ujęć fotograficznych!
+      </p>
+      <div class="gallery" id="galleryDym"></div>
     </div>
   </section>
 
@@ -109,7 +103,7 @@
     </div>
   </section>
 
-  <!-- Stopka (bez linku do FB) -->
+  <!-- Stopka -->
   <footer class="footer">
     <div class="container">
       <p>&copy; 2025 DJ DUO. Wszelkie prawa zastrzeżone.</p>
@@ -122,7 +116,7 @@
     <img class="lightbox-img" id="lightboxImg" src="" alt="Enlarged image" />
   </div>
 
-  <!-- Skrypt do animacji sekcji, slidera, hamburgera i lightboxa -->
+  <!-- Skrypt do animacji sekcji, slidera, hamburgera i dynamicznego wczytywania zdjęć -->
   <script src="script.js"></script>
 </body>
 </html>
