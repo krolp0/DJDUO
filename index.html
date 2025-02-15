@@ -11,7 +11,7 @@
   <!-- Nawigacja z hamburgerem + logo -->
   <header class="navbar">
     <div class="logo">
-      <!-- Upewnij się, że plik logo.jpg jest w repo (lub zmień nazwę) -->
+      <!-- Upewnij się, że plik logo.jpg istnieje w repo (lub zmień nazwę) -->
       <img src="logo.jpg" alt="Logo DJ DUO" />
     </div>
     <button class="nav-toggle" aria-label="Menu">
@@ -29,8 +29,9 @@
     </nav>
   </header>
 
-  <!-- Sekcja Hero z pełnym ekranem i sliderem w tle -->
+  <!-- Sekcja Hero z rotującym tłem (slider) pobieranym z folderu tlo/ -->
   <section id="hero" class="hero section">
+    <!-- Kontener na tło (będziemy do niego wstawiać tło dynamicznie) -->
     <div class="slider"></div>
     <div class="hero-content container">
       <h1>DJ DUO</h1>
@@ -38,33 +39,32 @@
     </div>
   </section>
 
-  <!-- Sekcja "O nas" -->
+  <!-- Sekcja "O nas" (możesz tu dodać kolejną galerię, jeśli chcesz) -->
   <section id="onas" class="section about">
     <div class="container">
       <h2>O nas</h2>
       <p>
         Jesteśmy dwoma DJ-ami z pasją, którzy kochają dzielić się muzyką i energią 
-        z publicznością. Nasza przygoda zaczęła się kilka lat temu, kiedy połączyła 
-        nas miłość do dobrych brzmień i niezapomnianych imprez.
+        z publicznością. Nasza przygoda zaczęła się kilka lat temu...
       </p>
       <p>
-        Gramy różnorodne style muzyczne – od klasycznych hitów, przez house i EDM, 
-        aż po klimatyczne sety na kameralnych eventach. Najważniejsze jest dla nas 
-        stworzenie niepowtarzalnej atmosfery i wywołanie uśmiechu na twarzach gości.
+        Gramy różnorodne style muzyczne – od klasycznych hitów, przez house i EDM...
       </p>
+      <!-- Jeśli chcesz galerię "poznaj nas", utwórz np. folder "poznaj/" i analogicznie
+           fetchImagesFromGitHub("poznaj", "galleryPoznaj") -->
+      <!-- <div class="gallery" id="galleryPoznaj"></div> -->
     </div>
   </section>
 
-  <!-- Sekcja "Portfolio" - wczytuje zdjęcia z folderu "DJ" w repozytorium -->
+  <!-- Sekcja "Portfolio" - pobiera zdjęcia z folderu DJ/ -->
   <section id="portfolio" class="section portfolio">
     <div class="container">
       <h2>Portfolio</h2>
-      <!-- Galeria automatycznie wypełniana w script.js -->
       <div class="gallery" id="galleryDJ"></div>
     </div>
   </section>
 
-  <!-- Sekcja "Fotolustro" - wczytuje zdjęcia z folderu "foto" -->
+  <!-- Sekcja "Fotolustro" - pobiera zdjęcia z folderu foto/ -->
   <section id="fotolustro" class="section fotolustro">
     <div class="container">
       <h2>Fotolustro</h2>
@@ -80,7 +80,7 @@
     </div>
   </section>
 
-  <!-- Sekcja "Ciężki dym" - wczytuje zdjęcia z folderu "dym" -->
+  <!-- Sekcja "Ciężki dym" - pobiera zdjęcia z folderu dym/ -->
   <section id="dym" class="section dym">
     <div class="container">
       <h2>Ciężki dym</h2>
@@ -116,7 +116,7 @@
     <img class="lightbox-img" id="lightboxImg" src="" alt="Enlarged image" />
   </div>
 
-  <!-- Skrypt do animacji sekcji, slidera, hamburgera i dynamicznego wczytywania zdjęć -->
+  <!-- Główny skrypt -->
   <script src="script.js"></script>
 </body>
 </html>
