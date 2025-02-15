@@ -1,17 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   /* 1. Ustaw swój user, repo i branch */
-  const GITHUB_USER = "krolp0";    // <-- ZMIEŃ NA SWÓJ LOGIN
-  const GITHUB_REPO = "DJDUO";     // <-- ZMIEŃ NA NAZWĘ REPO
-  const BRANCH_NAME = "main";      // <-- ZMIEŃ NA NAZWĘ GAŁĘZI
+  const GITHUB_USER = "krolp0";     // <-- ZMIEŃ NA SWÓJ LOGIN
+  const GITHUB_REPO = "DJDUO";      // <-- ZMIEŃ NA NAZWĘ REPO
+  const BRANCH_NAME = "main";       // <-- ZMIEŃ NA NAZWĘ GAŁĘZI
 
   // Intersection Observer (animacja wjazdu sekcji)
   const sections = document.querySelectorAll(".section");
-  const observerOptions = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.1
-  };
-
+  const observerOptions = { root: null, rootMargin: "0px", threshold: 0.1 };
   const observerCallback = (entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -20,31 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   };
-
   const observer = new IntersectionObserver(observerCallback, observerOptions);
   sections.forEach(section => observer.observe(section));
-
-  // Slider w tle (Hero) – zmiana obrazka co 5 sekund
-  // Możesz podać 2–3 obrazki z folderów w repo, np. "foto/fotolustro1.jpg"
-  const slider = document.querySelector(".slider");
-  const imagesSlider = [
-    "foto/fotolustro1.jpg",
-    "foto/fotolustro2.jpg"
-  ];
-  let currentIndex = 0;
-  slider.style.backgroundImage = `url(https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${BRANCH_NAME}/${imagesSlider[currentIndex]})`;
-
-  setInterval(() => {
-    currentIndex = (currentIndex + 1) % imagesSlider.length;
-    slider.style.backgroundImage = `url(https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${BRANCH_NAME}/${imagesSlider[currentIndex]})`;
-  }, 5000);
-
-  // Hamburger menu – obsługa kliknięcia
-  const navToggle = document.querySelector(".nav-toggle");
-  const navLinks = document.querySelector(".nav-links");
-  navToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-  });
 
   // Lightbox (powiększanie zdjęć po kliknięciu)
   const lightbox = document.getElementById("lightbox");
@@ -61,51 +33,102 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /*
-    Funkcja pobiera listę plików z folderu w repo GitHub
-    i wstawia miniaturki do kontenera o danym ID.
-  */
-  function fetchImagesFromGitHub(folderName, containerId) {
-    const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${folderName}?ref=${BRANCH_NAME}`;
-    // Przykład: https://api.github.com/repos/krolp0/DJDUO/contents/DJ?ref=main
+  // Hamburger menu – obsługa kliknięcia
+  const navToggle = document.querySelector(".nav-toggle");
+  const navLinks = document.querySelector(".nav-links");
+  navToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+  });
 
-    fetch(apiUrl)
+  /*
+    Funkcja pobiera listę plików (obrazów) z folderu w repo GitHub
+    i zwraca obietnicę (Promise) z tablicą URLi do tych obrazów.
+  */
+  function fetchImageUrlsFromGitHub(folderName) {
+    const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${folderName}?ref=${BRANCH_NAME}`;
+
+    return fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
-        data.forEach(item => {
-          // Szukamy plików typu obraz (jpg, jpeg, png, gif)
-          if (item.type === "file" && /\.(jpg|jpeg|png|gif)$/i.test(item.name)) {
-            // Tworzymy kontener .gallery-item
-            const galleryItem = document.createElement("div");
-            galleryItem.classList.add("gallery-item");
-
-            // Tworzymy <img> i ustawiamy src na download_url
-            const img = document.createElement("img");
-            img.src = item.download_url; // link bezpośredni do pliku
-            img.alt = item.name;
-
-            // Podpinamy do lightboxa
-            img.addEventListener("click", () => {
-              lightbox.classList.add("open");
-              lightboxImg.src = img.src;
-            });
-
-            galleryItem.appendChild(img);
-            // Wstawiamy do kontenera w HTML
-            document.getElementById(containerId).appendChild(galleryItem);
-          }
-        });
+        // Wyłapujemy tylko pliki z rozszerzeniami .jpg, .jpeg, .png, .gif
+        return data
+          .filter(item => item.type === "file" && /\.(jpg|jpeg|png|gif)$/i.test(item.name))
+          .map(item => item.download_url); // zwracamy link do pobrania
       })
-      .catch(err => console.error("Błąd pobierania plików z GitHuba:", err));
+      .catch(err => {
+        console.error("Błąd pobierania plików z GitHuba:", err);
+        return [];
+      });
   }
 
-  // Wczytujemy zdjęcia z folderów:
-  // 1) DJ -> #galleryDJ
-  fetchImagesFromGitHub("DJ", "galleryDJ");
+  /*
+    Funkcja tworzy elementy <img> w kontenerze .gallery
+    (lightbox obsługiwany przez event listener).
+  */
+  function populateGallery(imageUrls, containerId) {
+    const container = document.getElementById(containerId);
+    imageUrls.forEach(url => {
+      const galleryItem = document.createElement("div");
+      galleryItem.classList.add("gallery-item");
 
-  // 2) foto -> #galleryFoto
-  fetchImagesFromGitHub("foto", "galleryFoto");
+      const img = document.createElement("img");
+      img.src = url;
+      img.alt = url.split("/").pop(); // nazwa pliku
 
-  // 3) dym -> #galleryDym
-  fetchImagesFromGitHub("dym", "galleryDym");
+      // Podpinamy do lightboxa
+      img.addEventListener("click", () => {
+        lightbox.classList.add("open");
+        lightboxImg.src = img.src;
+      });
+
+      galleryItem.appendChild(img);
+      container.appendChild(galleryItem);
+    });
+  }
+
+  /*
+    1) Pobieramy zdjęcia z folderu `tlo/`
+    2) Rotujemy je w tle .slider co 5 sekund
+  */
+  function initHeroSlider() {
+    const slider = document.querySelector(".slider");
+    fetchImageUrlsFromGitHub("tlo")  // folder "tlo"
+      .then(imageUrls => {
+        if (!imageUrls.length) {
+          console.warn("Brak zdjęć w folderze tlo/ lub błąd API");
+          return;
+        }
+        let currentIndex = 0;
+        // Ustawiamy początkowe tło
+        slider.style.backgroundImage = `url(${imageUrls[currentIndex]})`;
+
+        // Rotacja co 5s
+        setInterval(() => {
+          currentIndex = (currentIndex + 1) % imageUrls.length;
+          slider.style.backgroundImage = `url(${imageUrls[currentIndex]})`;
+        }, 5000);
+      });
+  }
+
+  /*
+    Funkcja do pobierania zdjęć do danej galerii
+    (np. DJ -> #galleryDJ, foto -> #galleryFoto, dym -> #galleryDym)
+  */
+  function initGallery(folderName, containerId) {
+    fetchImageUrlsFromGitHub(folderName)
+      .then(urls => {
+        populateGallery(urls, containerId);
+      });
+  }
+
+  // Inicjujemy slider w Hero
+  initHeroSlider();
+
+  // Inicjujemy galerie
+  initGallery("DJ", "galleryDJ");
+  initGallery("foto", "galleryFoto");
+  initGallery("dym", "galleryDym");
+
+  // Jeśli chcesz dodać kolejną sekcję (np. "poznaj/"), wywołaj:
+  // initGallery("poznaj", "galleryPoznaj");
 });
